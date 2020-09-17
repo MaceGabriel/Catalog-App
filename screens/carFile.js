@@ -4,9 +4,9 @@ import {StyleSheet, View, Text, Button, TouchableOpacity, Image} from 'react-nat
 export default function CarFile( {navigation} ){
     return(
         <View>
-            <Image source = {{uri: navigation.getParam('avatar')}} style={styles.itemImage} />
-            <Text>{ navigation.getParam('first_name')}</Text>
-            <Text>{ navigation.getParam('last_name')}</Text>
-        </View>
+            <Text>Foto do carro</Text>
+            <Text>Informações sobre o carro</Text>
+            <Button title='Comprar'/>
+       </View>
     );
 }

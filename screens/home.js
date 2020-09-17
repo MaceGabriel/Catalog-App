@@ -10,36 +10,47 @@ let itemWidth = width/ numberGrid;
 
 export default function Home({navigation}){
     const[carros,setCarros] = useState(list);
-
-    return(
-        <View>
+   
+    return( 
+        <View style={styles.container}>      
             <FlatList 
                 data={carros}                
-                renderItem={({item})=>(
-                    <TouchableOpacity onPress={() => navigation.navigate('CarFile', item)}>
-                        <Image source = {{uri: item.avatar}} style={styles.itemImage} />
-                    </TouchableOpacity>
-                
+                renderItem={({item}) =>{
+                    return(
+                        <View style={styles.imageContainer}>
+                        <TouchableOpacity onPress={() => navigation.navigate('CarFile', {avatar:item.avatar, first_name:item.first_name, last_name: item.last_name})}>
+                            
+                            <Image source = {{uri: item.avatar}} style={styles.itemImage} />                                
+                        
+                        </TouchableOpacity>
+                    </View>
                     )}
+                } 
+                   
                
             />
         </View>
+        
     );
     
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         
+        alignItems:'center',
+        backgroundColor:'navy'
+        
+    },
+    imageContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        marginBottom: 3,
     },
     itemImage:{
-        width: itemWidth,
-        height: itemWidth,
+        width: 350,
+        height: 200,
+        flexDirection: 'column'
         
-    },
-    empty:{
-        alignContent: 'center',
-
-    }
+    },    
 });
