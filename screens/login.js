@@ -1,30 +1,36 @@
 import React, {useState} from 'react';
-import {StyleSheet, View, TextInput, Button} from 'react-native';
-import { color } from 'react-native-reanimated';
+import {StyleSheet, View, TextInput, Button, TouchableWithoutFeedback, Keyboard} from 'react-native';
+
 
 export default function Login({navigation}){
-    const [text, setText] = useState({user: '', password:''});
+    const [text, setText] = useState('');
 
     const changeHandler = (val) =>{
-        text.user.setText(val);
+        setText(val);
     }  
 
     return(
-       <View style={styles.container}>
-           <TextInput
-            style = {styles.input}
-            placeholder='User'
-            onChangeText={changeHandler}
-            value={text.user}
-           />
+        <TouchableWithoutFeedback onPress={() =>{
+            Keyboard.dismiss();
+            console.log('dismissed keyboard');
+          }}>
+
+        <View style={styles.container}>
             <TextInput
-            style = {styles.input}
-            placeholder='Password'
-            onChangeText={changeHandler}
-            value={text.password}
-           />
-           <Button onPress={() => navigation.navigate('Home')} title ='Enter'/>
-       </View>
+                style = {styles.input}
+                placeholder='User'
+                onChangeText={changeHandler}
+                value={text.user}
+            />
+                <TextInput
+                style = {styles.input}
+                placeholder='Password'
+                onChangeText={changeHandler}
+                value={text.password}
+            />
+            <Button onPress={() => navigation.navigate('Home')} title ='Enter'/>
+        </View>
+       </TouchableWithoutFeedback>
     )
 }
 const styles = StyleSheet.create({
@@ -35,11 +41,11 @@ const styles = StyleSheet.create({
     },
     input: {
         backgroundColor:'white',
-        marginBottom: 10,
+        marginBottom: 10,       
         paddingHorizontal: 2,
         paddingVertical: 6,
         borderBottomWidth: 1,
-        borderBottomColor: '#ddd'
+        borderBottomColor: '#ddd',            
         
     },
     

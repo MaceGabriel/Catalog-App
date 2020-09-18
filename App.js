@@ -4,13 +4,12 @@ import { StyleSheet, Text, View} from 'react-native';
 import {NavigationNativeContainer} from '@react-navigation/native';
 
 
-export default class App extends Component{
-  
-    render(){
+export default function App(){
+      
       return(
         <AppNavigator />
       )
-    }
+    
 
 }
 
